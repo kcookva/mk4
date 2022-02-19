@@ -3,15 +3,15 @@
 ''' Monitoring Software for MK4 GTI Project Car (Europäische Gruppe?) '''
 
 # import libraries
-import serial
+from serial import serial
 import obd
 import time
-import termchart
+# import termchart
 import os
 from art import *
 import datetime
 
-graph = termchart.Graph([])
+# graph = termchart.Graph([])
 print("\n")
 aprint("hal")
 print(datetime.datetime.now())
@@ -186,12 +186,14 @@ def live_feed():
             aprint("kirby dance")
             print("\n")
 
+            '''
             # start live graph
             graph.addData(intake_press())
             graph.draw()
             time.sleep(1)
+            '''
 
-            #connection.watch(obd.commands.INTAKE_PRESSURE, callback=intake_press)
+            connection.watch(obd.commands.INTAKE_PRESSURE, callback=intake_press)
             print("\n")
             connection.watch(obd.commands.COOLANT_TEMP, callback=cool_temp)
             print("\n")
